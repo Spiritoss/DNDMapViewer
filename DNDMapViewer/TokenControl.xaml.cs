@@ -69,23 +69,12 @@ namespace DNDMapViewer
             MessageBox.Show("change");
             Brush fill = new SolidColorBrush(cprColour.Color); 
             preview.SetFill(fill);
-            Ellipse test = new Ellipse();
-            test.Stroke = Brushes.Black;
-            test.Width = 50;
-            test.Height = 50;
-            test.Fill = fill;
-            test.HorizontalAlignment = HorizontalAlignment.Left;
-            test.VerticalAlignment = VerticalAlignment.Center;
-            container.Children.Add(test);
         }
 
         private void txtChar_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            if (txtChar.Text != null)
-            {
-                character = txtChar.Text;
-                preview.SetCharacter(character);
-            }
+        {           
+            character = txtChar.Text;
+            preview.SetCharacter(character);           
         }
 
         private void AddToken(object sender, RoutedEventArgs e)
