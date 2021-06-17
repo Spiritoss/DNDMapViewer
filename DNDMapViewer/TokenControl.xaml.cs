@@ -23,7 +23,6 @@ namespace DNDMapViewer
         //Brush fill;
         string character;
         //bool isDeletable;
-
         public TokenControl()
         {
             InitializeComponent();
@@ -32,6 +31,10 @@ namespace DNDMapViewer
             Grid.SetRow(preview, 0);
             preview.MouseLeftButtonDown += new MouseButtonEventHandler(AddToken);
             container.Children.Add(preview);
+            colorSelector.tc = this;
+
+
+            
         }
 
         private void cmbSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,8 +70,8 @@ namespace DNDMapViewer
         private void cprColour_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
         {
             MessageBox.Show("change");
-            Brush fill = new SolidColorBrush(cprColour.Color); 
-            preview.SetFill(fill);
+            //Brush fill = new SolidColorBrush(cprColour.Color); 
+            //preview.SetFill(fill);
         }
 
         private void txtChar_SelectionChanged(object sender, RoutedEventArgs e)
@@ -80,6 +83,25 @@ namespace DNDMapViewer
         private void AddToken(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("click");
+        }
+
+        
+
+        private void cprColour_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //MessageBox.Show("change");
+            
+        }
+
+        private void cprColour_MouseMove(object sender, MouseEventArgs e)
+        {
+           // Brush fill = new SolidColorBrush(cprColour.Color);
+            //preview.SetFill(fill);
+        }
+
+        public void SetPreviewColor(Brush color)
+        {
+            preview.SetFill(color);
         }
     }
 }

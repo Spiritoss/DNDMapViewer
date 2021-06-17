@@ -30,9 +30,9 @@
                     </ComboBox>
                 </StackPanel>
                 <TextBox DockPanel.Dock="Top" materialDesign:HintAssist.Hint="Letter" MaxLength="1" Name="txtChar" SelectionChanged="txtChar_SelectionChanged"/>
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
                     <Label Content="Color:"/>
-                    <materialDesign:ColorPicker Name="cprColour" DockPanel.Dock="Top" Width="150" ColorChanged="cprColour_ColorChanged"/>
+                    <local:RGBPicker x:Name="colorSelector"/>
                 </StackPanel>
             </DockPanel>
         </Grid>

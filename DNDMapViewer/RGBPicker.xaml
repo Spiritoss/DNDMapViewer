@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="DNDMapViewer.RGBPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DNDMapViewer"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <local:CustomSlider x:Name="R" label="R" maxValue="255" minValue="0" defaultValue="0" textboxHint="color value" textboxTooltip="color value" DockPanel.Dock="Top"/>
+        <local:CustomSlider x:Name="G" label="G" maxValue="255" minValue="0" defaultValue="0" textboxHint="color value" textboxTooltip="color value" DockPanel.Dock="Top"/>
+        <local:CustomSlider x:Name="B" label="B" maxValue="255" minValue="0" defaultValue="0" textboxHint="color value" textboxTooltip="color value" DockPanel.Dock="Top"/>
+        <Button Name="setButton" Content="Set" DockPanel.Dock="Top" Margin="10" Click="setButton_Click"/>
+    </DockPanel>
+</UserControl>
