@@ -33,6 +33,15 @@ namespace DNDMapViewer
 
             GenerateToken();
         }
+        public Token(Token t)
+        {
+            InitializeComponent();
+            this.diameter = t.diameter;
+            this.fill = t.fill;
+            this.character = t.character;
+            this.isDeletable = true;
+            GenerateToken();
+        }
 
         void GenerateToken()
         {
@@ -46,8 +55,13 @@ namespace DNDMapViewer
         {
             if (isDeletable)
             {
-                dynamic p = this.Parent;
-                p.Children.Remove(this);
+                try
+                {
+                    dynamic p = this.Parent;
+                    p.Children.Remove(this);
+                }
+                catch { }
+                
             }
         }
 

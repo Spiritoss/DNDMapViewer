@@ -12,6 +12,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:MapControls Grid.Column="0"/>
+        <local:MapControls x:Name="mapControls" Grid.Column="0"/>
+        <local:MapViewer x:Name="mapViewer" Grid.Column="1" Background="red"/>
     </Grid>
 </Window>

@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:DNDMapViewer"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="10">
-        <Ellipse Fill="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="elps" MouseRightButtonDown="elps_MouseRightButtonDown"/>
+    <Grid Margin="10" MouseRightButtonDown="elps_MouseRightButtonDown">
+        <Ellipse Fill="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="elps" MouseRightButtonDown="elps_MouseRightButtonDown" Stroke="Black" StrokeThickness="1"/>
         <Viewbox>
             <TextBlock TextWrapping="Wrap" Text="T" Name="objectLabel"/>
         </Viewbox>

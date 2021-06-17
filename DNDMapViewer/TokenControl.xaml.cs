@@ -23,6 +23,7 @@ namespace DNDMapViewer
         //Brush fill;
         string character;
         //bool isDeletable;
+        public MapViewer mv;
         public TokenControl()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace DNDMapViewer
             preview.MouseLeftButtonDown += new MouseButtonEventHandler(AddToken);
             container.Children.Add(preview);
             colorSelector.tc = this;
+            cmbSize.SelectedIndex = 4;
 
 
             
@@ -50,7 +52,7 @@ namespace DNDMapViewer
                     preview.SetDiameter(40);
                     break;
                 case "Medium":
-                    preview.SetDiameter(40);
+                    preview.SetDiameter(60);
                     break;
                 case "Large":
                     preview.SetDiameter(80);
@@ -82,7 +84,8 @@ namespace DNDMapViewer
 
         private void AddToken(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("click");
+            //MessageBox.Show("click");
+            mv.AddNewToken(preview, mv.mapCanvas.Width / 2 + preview.Width / 2, mv.mapCanvas.Height / 2 + preview.Height / 2);
         }
 
         
@@ -103,5 +106,7 @@ namespace DNDMapViewer
         {
             preview.SetFill(color);
         }
+
+
     }
 }

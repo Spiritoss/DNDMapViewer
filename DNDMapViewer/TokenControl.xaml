@@ -20,7 +20,7 @@
             <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                     <Label Content="Size:"/>
-                    <ComboBox Name="cmbSize" Width="100" SelectionChanged="cmbSize_SelectionChanged" SelectedValuePath="Content">
+                    <ComboBox Name="cmbSize" Width="100" SelectionChanged="cmbSize_SelectionChanged" SelectedValuePath="Content" Text="Medium">
                         <ComboBoxItem>Tiny</ComboBoxItem>
                         <ComboBoxItem>Small</ComboBoxItem>
                         <ComboBoxItem>Medium</ComboBoxItem>
