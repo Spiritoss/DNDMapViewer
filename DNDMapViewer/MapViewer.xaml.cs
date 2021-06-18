@@ -37,16 +37,26 @@ namespace DNDMapViewer
             mapCanvas.Children.Add(tk);
 
         }
+
+        public void GetMap(string uri)
+        {
+            MessageBox.Show(uri);
+            ImageBrush ib = new ImageBrush(new BitmapImage(new Uri(uri, UriKind.Relative)));
+            mapCanvas.Background = ib;
+        }
+
         private void MouseDown(object sender, MouseButtonEventArgs e)
         {
             isMouseDown = true;
             selected = (Token)sender;
         }
+
         private void MouseUp(object sender, MouseButtonEventArgs e)
         {
             isMouseDown = false;
             selected = null;
         }
+
         private void MoveSelected(object sender, MouseEventArgs e)
         {
             if (isMouseDown)
