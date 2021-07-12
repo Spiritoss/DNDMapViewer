@@ -40,8 +40,13 @@ namespace DNDMapViewer
 
         public void GetMap(string uri)
         {
-            MessageBox.Show(uri);
-            ImageBrush ib = new ImageBrush(new BitmapImage(new Uri(uri, UriKind.Relative)));
+            //MessageBox.Show(uri);
+            ImageBrush ib = new ImageBrush();
+            ib.ImageSource = new BitmapImage(new Uri(uri, UriKind.RelativeOrAbsolute));
+            mapCanvas.MinWidth = ib.ImageSource.Width;
+            mapCanvas.MinHeight = ib.ImageSource.Height;
+            mapCanvas.MaxWidth = ib.ImageSource.Width;
+            mapCanvas.MaxHeight = ib.ImageSource.Height;
             mapCanvas.Background = ib;
         }
 

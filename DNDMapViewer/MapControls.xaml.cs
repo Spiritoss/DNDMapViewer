@@ -20,38 +20,19 @@ namespace DNDMapViewer
     public partial class MapControls : UserControl
     {
         Image map = new Image();
+        public MapViewer mv;
         public MapControls()
         {
             InitializeComponent();
         }
 
-        void SelectMapBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
-            if (open.ShowDialog() == true)
-            {
-                string uri = open.FileName;
-                /*
-                MessageBox.Show(imageName);
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(imageName, UriKind.RelativeOrAbsolute);
-                bitmap.EndInit();
-
-                ImageBrush ib = new ImageBrush();
-                ib.ImageSource = bitmap;
-                */
-                MapViewer mv = new MapViewer();
-                mv.GetMap(uri);
-
-            }
-        }
         
 
-        void OnClick5(object sender, RoutedEventArgs e)
+        
+
+        private void btnToggleMenu_Click(object sender, RoutedEventArgs e)
         {
-            btnToggleMenu.Background = Brushes.LightBlue;
+
         }
     }
 

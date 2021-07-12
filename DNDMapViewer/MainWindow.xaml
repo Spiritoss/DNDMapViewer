@@ -8,11 +8,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:MapControls x:Name="mapControls" Grid.Column="0"/>
-        <local:MapViewer x:Name="mapViewer" Grid.Column="1" Background="red"/>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="controls">
+                <MenuItem Header="hide" Click="MenuItem_Click"/>
+                <MenuItem Header="show" Click="MenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="load map" Click="MenuItem_Click_1"/>
+        </Menu>
+        <local:MapControls x:Name="mapControls" Grid.Column="0" Grid.Row="1"/>
+        <local:MapViewer x:Name="mapViewer" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>

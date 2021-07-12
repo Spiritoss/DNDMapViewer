@@ -10,10 +10,8 @@
     <materialDesign:Card Margin="5">
         <DockPanel Margin="10">
             <Label Content="Dungeons &amp; Dragons Map Viewer" DockPanel.Dock="Top"/>
-            <Button Name="SelectMapBtn" Content="Select Map" Click="SelectMapBtn_Click" DockPanel.Dock="Top"/>
             <local:TokenControl x:Name="tokenControls" DockPanel.Dock="Top"/>
-            <local:PaintControl DockPanel.Dock="Top"/>
-            <Button Name="btnToggleMenu" Click="OnClick5" ClickMode="Hover" Content="&lt; &lt; &lt;"/>
+            <!--<local:PaintControl DockPanel.Dock="Top"/>-->
         </DockPanel>
     </materialDesign:Card>
 </UserControl>
