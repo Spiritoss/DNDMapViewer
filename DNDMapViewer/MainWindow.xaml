@@ -24,6 +24,12 @@
             <MenuItem Header="load map" Click="MenuItem_Click_1"/>
         </Menu>
         <local:MapControls x:Name="mapControls" Grid.Column="0" Grid.Row="1"/>
+        
+
         <local:MapViewer x:Name="mapViewer" Grid.Column="1" Grid.Row="1"/>
+        <materialDesign:Card Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+            <Label Name="ZoomDisplay"  Content="zoom" Background="White"/>
+        </materialDesign:Card>
+        
     </Grid>
 </Window>

@@ -27,7 +27,7 @@ namespace DNDMapViewer
         public TokenControl()
         {
             InitializeComponent();
-            preview = new Token(100, Brushes.Red, "A", false);
+            preview = new Token(100, Brushes.Red, "A", false, 0, 120);
             Grid.SetColumn(preview, 0);
             Grid.SetRow(preview, 0);
             preview.MouseLeftButtonDown += new MouseButtonEventHandler(AddToken);
@@ -47,21 +47,27 @@ namespace DNDMapViewer
             {
                 case "Tiny":
                     preview.SetDiameter(30);
+                    preview.originalDiameter = 30;
                     break;
                 case "Small":
                     preview.SetDiameter(40);
+                    preview.originalDiameter = 40;
                     break;
                 case "Medium":
                     preview.SetDiameter(60);
+                    preview.originalDiameter = 60;
                     break;
                 case "Large":
                     preview.SetDiameter(80);
+                    preview.originalDiameter = 80;
                     break;
                 case "Huge":
                     preview.SetDiameter(120);
+                    preview.originalDiameter = 120;
                     break;
                 case "Gargantuan":
                     preview.SetDiameter(160);
+                    preview.originalDiameter = 160;
                     break;
                 default:
                     MessageBox.Show("Please select a token size");

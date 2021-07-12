@@ -29,6 +29,7 @@ namespace DNDMapViewer
             InitializeComponent();
             mapControls.tokenControls.mv = mapViewer;
             mapControls.mv = mapViewer;
+            mapViewer.mw = this;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <Canvas Name="mapCanvas" Width="auto" Height="auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseWheel="ScrollViewer_MouseWheel">
+        <Canvas Name="mapCanvas" Width="auto" Height="auto" PreviewMouseWheel="mapCanvas_PreviewMouseWheel">
             <Canvas.Background>
                 <ImageBrush ImageSource="{Binding Path=Test}" />
             </Canvas.Background>

@@ -21,6 +21,11 @@ namespace DNDMapViewer
         public TokenControl tc;
         private bool isMouseDown;
         Token selected;
+        public double zoomDelta = 1;
+        double zoomAmount = 0.1;
+        double imageHeight;
+        double imageWidth;
+        public MainWindow mw;
         public MapViewer()
         {
             InitializeComponent();
@@ -28,6 +33,8 @@ namespace DNDMapViewer
 
         public void AddNewToken(Token t, double x, double y)
         {
+            
+            t.zoomValue = zoomDelta;
             Token tk = new Token(t);
             tk.MouseLeftButtonDown += new MouseButtonEventHandler(MouseDown);
             tk.MouseLeftButtonUp += new MouseButtonEventHandler(MouseUp);
@@ -43,6 +50,8 @@ namespace DNDMapViewer
             //MessageBox.Show(uri);
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = new BitmapImage(new Uri(uri, UriKind.RelativeOrAbsolute));
+            imageHeight = ib.ImageSource.Height;
+            imageWidth = ib.ImageSource.Width;
             mapCanvas.MinWidth = ib.ImageSource.Width;
             mapCanvas.MinHeight = ib.ImageSource.Height;
             mapCanvas.MaxWidth = ib.ImageSource.Width;
@@ -70,6 +79,39 @@ namespace DNDMapViewer
                 Canvas.SetTop((Token)selected, P.Y - ((Token)selected).Width / 2);
                 Canvas.SetLeft((Token)selected, P.X - ((Token)selected).Height / 2);
             }
+            
+        }
+
+        private void mapCanvas_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            int sign = 1;
+            if (e.Delta > 0)
+            {
+                zoomDelta += zoomAmount;
+            } else
+            {
+                zoomDelta -= (zoomDelta > 0.2? zoomAmount : 0);
+            }
+            mapCanvas.MaxHeight = imageHeight * zoomDelta;
+            mapCanvas.MaxWidth = imageWidth * zoomDelta;
+
+            mapCanvas.MinHeight = imageHeight * zoomDelta;
+            mapCanvas.MinWidth = imageWidth * zoomDelta;
+            mw.ZoomDisplay.Content = zoomDelta.ToString(".00") + "x";
+            //zoomDelta += sign * zoomAmount;
+            foreach (Token t in mapCanvas.Children)
+            {
+                
+
+                t.ZoomSize(zoomDelta);
+            }
+            e.Handled = true;
+
+            
+        }
+
+        private void ScrollViewer_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
             
         }
     }
