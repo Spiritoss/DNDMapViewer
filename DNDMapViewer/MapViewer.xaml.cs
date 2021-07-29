@@ -78,6 +78,8 @@ namespace DNDMapViewer
                 Point P = Mouse.GetPosition(mapCanvas);
                 Canvas.SetTop((Token)selected, P.Y - ((Token)selected).Width / 2);
                 Canvas.SetLeft((Token)selected, P.X - ((Token)selected).Height / 2);
+                ((Token)selected).percentageX = VisualTreeHelper.GetOffset((Token)selected).X / (imageWidth * zoomDelta);
+                ((Token)selected).percentageY = VisualTreeHelper.GetOffset((Token)selected).Y / (imageHeight * zoomDelta);
             }
             
         }
@@ -88,23 +90,38 @@ namespace DNDMapViewer
             if (e.Delta > 0)
             {
                 zoomDelta += zoomAmount;
+                sign = 1;
+
             } else
             {
                 zoomDelta -= (zoomDelta > 0.2? zoomAmount : 0);
+                sign = -1;
             }
-            mapCanvas.MaxHeight = imageHeight * zoomDelta;
-            mapCanvas.MaxWidth = imageWidth * zoomDelta;
-
-            mapCanvas.MinHeight = imageHeight * zoomDelta;
-            mapCanvas.MinWidth = imageWidth * zoomDelta;
-            mw.ZoomDisplay.Content = zoomDelta.ToString(".00") + "x";
+            
             //zoomDelta += sign * zoomAmount;
             foreach (Token t in mapCanvas.Children)
             {
                 
 
                 t.ZoomSize(zoomDelta);
+
+                
+
+                Canvas.SetTop(t, (t.percentageY * (imageHeight * zoomDelta)));
+                Canvas.SetLeft(t, (t.percentageX * (imageWidth * zoomDelta)));
+                
+
+
+                
+
             }
+
+            mapCanvas.MaxHeight = imageHeight * zoomDelta;
+            mapCanvas.MaxWidth = imageWidth * zoomDelta;
+
+            mapCanvas.MinHeight = imageHeight * zoomDelta;
+            mapCanvas.MinWidth = imageWidth * zoomDelta;
+            mw.ZoomDisplay.Content = zoomDelta.ToString(".00") + "x";
             e.Handled = true;
 
             

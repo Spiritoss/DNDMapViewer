@@ -18,14 +18,17 @@ namespace DNDMapViewer
     /// </summary>
     public partial class Token : UserControl
     {
-        public int diameter;
+        public double diameter;
         Brush fill;
         string character;
         bool isDeletable;
         public double zoomValue = 1;
-        public int originalDiameter;
+        public double originalDiameter;
 
-        public Token(int diameter, Brush fill, string character, bool isDeletable, int zoomValue, int originalDiameter)
+        public double percentageX;
+        public double percentageY;
+
+        public Token(int diameter, Brush fill, string character, bool isDeletable, double zoomValue, double originalDiameter)
         {
             InitializeComponent();
             this.diameter = diameter;
@@ -40,7 +43,7 @@ namespace DNDMapViewer
         public Token(Token t)
         {
             InitializeComponent();
-            this.diameter = (int)(t.diameter * t.zoomValue);
+            this.diameter = t.diameter * t.zoomValue;
             this.fill = t.fill;
             this.character = t.character;
             this.isDeletable = true;
@@ -71,7 +74,7 @@ namespace DNDMapViewer
             }
         }
 
-        public void SetDiameter(int diameter)
+        public void SetDiameter(double diameter)
         {
             this.diameter = diameter;
             GenerateToken();
@@ -98,7 +101,7 @@ namespace DNDMapViewer
         public void ZoomSize(double zoomLevel)
         {
             zoomValue = zoomLevel;
-            diameter = (int)(originalDiameter * zoomLevel); 
+            diameter = originalDiameter * zoomLevel; 
             if (diameter < 0)
             {
                 // do nothing
@@ -106,6 +109,11 @@ namespace DNDMapViewer
             {
                 GenerateToken();
             }
+        }
+
+        public void updatePercentage(int cx, int cy, int cwidth, int cheight, double zoomLevel)
+        {
+            
         }
     }
 }
