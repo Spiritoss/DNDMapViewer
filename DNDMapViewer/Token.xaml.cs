@@ -101,7 +101,7 @@ namespace DNDMapViewer
         public void ZoomSize(double zoomLevel)
         {
             zoomValue = zoomLevel;
-            diameter = originalDiameter * zoomLevel; 
+            diameter = originalDiameter * zoomValue; 
             if (diameter < 0)
             {
                 // do nothing

@@ -29,6 +29,7 @@ namespace DNDMapViewer
         public MapViewer()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         public void AddNewToken(Token t, double x, double y)
@@ -147,12 +148,14 @@ namespace DNDMapViewer
 
 
             }
+            //ScaleTransform scale = new ScaleTransform(mapCanvas.LayoutTransform.Value.M11 * ScaleRate, mapCanvas.LayoutTransform.Value.M22 * ScaleRate);
+            //mapCanvas.LayoutTransform = scale;
+            //mapCanvas.UpdateLayout();
+            mapCanvas.MaxHeight = imageHeight * zoomDelta;// - (zoomDelta > 1? 0.1:-0.1);
+            mapCanvas.MaxWidth = imageWidth * zoomDelta;// - (zoomDelta > 1 ? 0.1 : -0.1);
 
-            mapCanvas.MaxHeight = imageHeight * zoomDelta;
-            mapCanvas.MaxWidth = imageWidth * zoomDelta;
-
-            mapCanvas.MinHeight = imageHeight * zoomDelta;
-            mapCanvas.MinWidth = imageWidth * zoomDelta;
+            mapCanvas.MinHeight = imageHeight * zoomDelta;// - (zoomDelta > 1 ? 0.1 : -0.1);
+            mapCanvas.MinWidth = imageWidth * zoomDelta;// - (zoomDelta > 1 ? 0.1 : -0.1);
             mw.ZoomDisplay.Content = zoomDelta.ToString(".00") + "x";
         }
 
