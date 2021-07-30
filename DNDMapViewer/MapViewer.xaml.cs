@@ -127,6 +127,35 @@ namespace DNDMapViewer
             
         }
 
+        public void zoomMap(double zoomDelta)
+        {
+            this.zoomDelta = zoomDelta;
+
+            foreach (Token t in mapCanvas.Children)
+            {
+
+
+                t.ZoomSize(zoomDelta);
+
+
+
+                Canvas.SetTop(t, (t.percentageY * (imageHeight * zoomDelta)));
+                Canvas.SetLeft(t, (t.percentageX * (imageWidth * zoomDelta)));
+
+
+
+
+
+            }
+
+            mapCanvas.MaxHeight = imageHeight * zoomDelta;
+            mapCanvas.MaxWidth = imageWidth * zoomDelta;
+
+            mapCanvas.MinHeight = imageHeight * zoomDelta;
+            mapCanvas.MinWidth = imageWidth * zoomDelta;
+            mw.ZoomDisplay.Content = zoomDelta.ToString(".00") + "x";
+        }
+
         private void ScrollViewer_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             

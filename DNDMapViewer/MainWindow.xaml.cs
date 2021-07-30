@@ -30,6 +30,7 @@ namespace DNDMapViewer
             mapControls.tokenControls.mv = mapViewer;
             mapControls.mv = mapViewer;
             mapViewer.mw = this;
+           
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -95,6 +96,15 @@ namespace DNDMapViewer
                 mapViewer.GetMap(uri);
 
             }
+        }
+
+        private void zoomSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (mapViewer != null)
+            {
+                mapViewer.zoomMap(zoomSlider.Value);
+            }
+            
         }
     }
 }

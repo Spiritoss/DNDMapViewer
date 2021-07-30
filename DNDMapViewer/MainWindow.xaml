@@ -16,20 +16,23 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <MenuItem Header="controls">
                 <MenuItem Header="hide" Click="MenuItem_Click"/>
                 <MenuItem Header="show" Click="MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="load map" Click="MenuItem_Click_1"/>
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+                <Label Name="ZoomDisplay"  Content="zoom" Background="White"/>
+            </materialDesign:Card>
+            <Slider Name="zoomSlider" Maximum="2" Minimum="0.1" TickFrequency="0.1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPrecision="2" Width="200" Value="1" ValueChanged="zoomSlider_ValueChanged"></Slider>
         </Menu>
         <local:MapControls x:Name="mapControls" Grid.Column="0" Grid.Row="1"/>
-        
 
         <local:MapViewer x:Name="mapViewer" Grid.Column="1" Grid.Row="1"/>
-        <materialDesign:Card Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
-            <Label Name="ZoomDisplay"  Content="zoom" Background="White"/>
-        </materialDesign:Card>
-        
+
+
+
     </Grid>
 </Window>
